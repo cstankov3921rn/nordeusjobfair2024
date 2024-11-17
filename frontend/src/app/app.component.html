@@ -1,0 +1,25 @@
+<div>
+  <h1 align="center">Choose an island you think has the highest average height!</h1>
+  <p align="center">Lives: {{life}}</p>
+  <h1 align="center" *ngIf="life == 0">Game over :(</h1>
+  <table border="1" style="border-collapse: collapse; width: 100%;" *ngIf="life > 0 && !win">
+    <tbody>
+    <tr *ngFor="let row of table; let rowIndex = index">
+      <td *ngFor="let cell of row; let colIndex = index "[ngStyle]="{'background-color': getColor(cell)}"  style="padding: 5px; text-align: center;" (click)="isRight(rowIndex,colIndex, cell)" (mouseenter)="onMouseEnter($event)"
+          (mouseleave)="onMouseLeave($event)">
+
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div align="center" *ngIf="life == 0">
+    <button (click)="refreshPage()" class="button">Play again</button>
+  </div>
+
+  <div align="center" *ngIf="win">
+    <h1 align="center" >You've won!</h1>
+    <button (click)="refreshPage()" class="button">Play again</button>
+  </div>
+
+</div>
